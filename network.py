@@ -13,11 +13,11 @@ class Actor(nn.Module):
         
         Params
         ======
-            state_size (int) : State space size
-            action_size (int) : Action space size
-            seed (int) : Random seed
-            fc1_unit (int)  
-            fc2_unit (int)
+        state_size (int) : State space size
+        action_size (int) : Action space size
+        seed (int) : Random seed
+        fc1_unit (int)  
+        fc2_unit (int)
         """
         # super(Actor, self).__init__()
         # Use this constructor instead because of autoreload issue. 
@@ -44,7 +44,7 @@ class Actor(nn.Module):
             if isinstance(m, nn.Linear):
                 I.xavier_normal_(m.weight)
 
-    def reset_parameters_uniform(self):
+    def reset_parameters(self):
         """
         Use the intialization techniqe from Lillicrap et al.
         See http://arxiv.org/abs/1509.02971 for details.
@@ -66,10 +66,10 @@ class Actor(nn.Module):
         
         Parmas
         =======
-            state (Torch Tensor) [batch_size, state_size]
+        state (Torch Tensor) [batch_size, state_size]
         Returns
         ====== 
-            F.tanh(x) (Torch Tensor) [batch_size, action_size] : range of (-1,1)
+        F.tanh(x) (Torch Tensor) [batch_size, action_size] : range of (-1,1)
         """
         #x = self.bn1(state)
         x = F.leaky_relu(self.fc1(state))
@@ -87,21 +87,21 @@ class Critic(nn.Module):
         
         Params
         ======
-            state_size (int) : State space size
-            action_size (int) : Action space size
-            seed (int) : Random seed
-            fc1_unit (int) : 
-            fc2_unit (int) 
+        state_size (int) : State space size
+        action_size (int) : Action space size
+        seed (int) : Random seed
+        fc1_unit (int) 
+        fc2_unit (int) 
         """
         # super(Critic, self).__init__()
         super().__init__()
         torch.manual_seed(seed)
         
         self.fc1 = nn.Linear((state_size+action_size)*num_agents, fc1_units)
-        self.bn1 = nn.BatchNorm1d(fc1_units)
+        # self.bn1 = nn.BatchNorm1d(fc1_units)
         
         self.fc2 = nn.Linear(fc1_units, fc2_units)
-        self.bn2 = nn.BatchNorm1d(fc2_units)
+        # self.bn2 = nn.BatchNorm1d(fc2_units)
         
         self.fc3 = nn.Linear(fc2_units, 1)
         
@@ -140,11 +140,11 @@ class Critic(nn.Module):
         
         Params
         =======
-            all_states (torch tensor) [batch_size, num_agents, state_size]
-            action_collections (torch tensor) [batch_size, num_agents, action_size]
+        all_states (torch tensor) [batch_size, num_agents, state_size]
+        action_collections (torch tensor) [batch_size, num_agents, action_size]
         Retunrs
         ======
-            x (torch tensor) [batch_size, 1] : Q-value
+        x (torch tensor) [batch_size, 1] : Q-value
         """
         #[batch_size, num_agents, state_size] -> [batch_size, num_agents*state_size]
         states_flatten = all_states.view(all_states.shape[0], -1)
