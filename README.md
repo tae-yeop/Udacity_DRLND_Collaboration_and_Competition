@@ -91,6 +91,8 @@ params.json is the log file for the hyperparmeters of particular maddpg model.
 
 scores.json is the log file for the particular maddpg model.
 
+After several experiments, I've found that model_18 is the best model. Please check the ./model folder.
+
 ### References
 
 - Lowe et al., [Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments](http://arxiv.org/abs/1706.02275)
