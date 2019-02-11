@@ -1,4 +1,4 @@
-./python
-./data
-./ipynb_checkpoints
-./__pycache__
+python/
+data/
+.ipynb_checkpoints/
+__pycache__/
