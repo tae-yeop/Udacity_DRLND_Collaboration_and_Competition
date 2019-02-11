@@ -53,7 +53,7 @@ To set up your python environment to run the code in this repository, follow the
     cd deep-reinforcement-learning/python
     pip install .
     ```
-3. Download the unity environment from one of the links below. In this case you will download the Banana collector environment.
+3. Download the unity environment from one of the links below. In this case you will download the Tennis environment.
     - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux.zip)
     - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis.app.zip)
     - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Windows_x86.zip)
@@ -67,7 +67,7 @@ To set up your python environment to run the code in this repository, follow the
 
 ### Instructions
 
-There are 4 main elements in this project. 
+There are 7 main elements in this project. 
 
 - Report.ipynd
 - network.py
@@ -77,19 +77,19 @@ There are 4 main elements in this project.
 - params.json (in ./model)
 - scores.json (in ./model)
 
-Report.ipynd includes simple summary of the algorithm and codes for training the agent, visualizing the rewards graphs and running the agent. You can try experiments by setting different hyperparameters in this Report.ipynd file.
+*Report.ipynd* includes simple summary of the algorithm and codes for training the agent, visualizing the rewards graphs and running the agent. You can try experiments by setting different hyperparameters in this Report.ipynd file.
 
 You can modify the actor and critic network model via network.py. 
 
-ddpg.py includes base ddpg agent model and noise model. 
+*ddpg.py* includes base ddpg agent model and noise model. 
 
-maddpg.py includes maddpg model and replay buffer model. maddpg model have references to each individual ddpg agent and shared replay buffer. 
+*maddpg.py* includes maddpg model and replay buffer model. maddpg model have references to each individual ddpg agent and shared replay buffer. 
 
-model_checkpoint.pth is parameters of the agent's networks. You can check the all the checkpoint.pth in ./model folder. Instead of training, You can use this checkpoint directly to see how the agents interact with the each other. To see how the agent behave, You can run the cell in Report.ipynd
+*model_checkpoint.pth* is parameters of the agent's networks. You can check the all the checkpoint.pth in ./model folder. Instead of training, You can use this checkpoint directly to see how the agents interact with the each other. To see how the agent behave, You can run the cell in Report.ipynd
 
-params.json is the log file for the hyperparmeters of particular maddpg model.
+*params.json* is the log file for the hyperparmeters of particular maddpg model.
 
-scores.json is the log file for the particular maddpg model.
+*scores.json* is the log file for the particular maddpg model.
 
 After several experiments, I've found that model_18 is the best model. Please check the ./model folder.
 
