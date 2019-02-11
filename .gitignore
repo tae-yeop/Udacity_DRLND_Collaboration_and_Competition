@@ -1,4 +1,13 @@
-python/
-data/
+# cached file
 .ipynb_checkpoints/
 __pycache__/
+unity-environment.log
+
+# unity-ML and requirements
+python/
+# unity environment 
+data/
+
+#zip files
+zip/
+*.zip
